@@ -3,6 +3,7 @@ import { PrismaClient } from "@/generated/prisma";
 
 
 
+
 const prisma = new PrismaClient();
 
 
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
     data: { name, price }
   })
 
-  return new NextResponse(newProduct, {
+  return NextResponse.json(newProduct, {
     status: 201,
   })
 }
@@ -43,7 +44,7 @@ export async function PATCH(request: NextRequest) {
     data: { name, price }
   })
 
-  return new NextResponse(updateProduct, {
+  return NextResponse.json(updateProduct, {
     status: 200,
   })
 }
@@ -58,7 +59,7 @@ export async function DELETE(request: NextRequest) {
     data: { deleted_at: new Date() }
   })
 
-  return new NextResponse(deleteProduct, {
+  return NextResponse.json(deleteProduct, {
     status: 200,
   })
 }
